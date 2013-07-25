@@ -128,7 +128,7 @@ begin
 	);
 	
 	-- Blue Component Sampling Component
-	CORE_L0_G_SAMPLE: mvi_core_0_sample PORT MAP(
+	CORE_L0_B_SAMPLE: mvi_core_0_sample PORT MAP(
 		fmt_width => i_fmt_width,
 		fmt_height => i_fmt_height,
 		pos_x => i_pos_x,
