@@ -5,6 +5,11 @@ use ieee_proposed.fixed_pkg.all;
 
 --use UNISIM.VComponents.all;
 
+-- Sub-core module 'View'
+-- Computes the view for the particular pixel at (pos_x, pos_y) based on the periods
+-- Right now period_x actually represents the number of views (we're not doing anything fancy yet)
+-- period_y is computed from the angle factor from the angle module outside the core
+
 entity mvi_core_0_view is
     Port ( pos_x 	: in  UNSIGNED(11 downto 0);
            pos_y 	: in  UNSIGNED(11 downto 0);
