@@ -6,14 +6,14 @@ use ieee_proposed.fixed_pkg.all;
 --use UNISIM.VComponents.all;
 
 entity mvi_core_0_view is
-    Port ( pos_x 	  : in  UNSIGNED(11 downto 0);
-           pos_y 	  : in  UNSIGNED(11 downto 0);
-           period_x : in  UNSIGNED(3 downto 0);
-           period_y : in  SFIXED(15 downto -16);
-           view_r   : out  UNSIGNED(3 downto 0);
-           view_g   : out  UNSIGNED(3 downto 0);
-           view_b   : out  UNSIGNED(3 downto 0);
-			  clk		  : in 	STD_LOGIC);
+    Port ( pos_x 	: in  UNSIGNED(11 downto 0);
+           pos_y 	: in  UNSIGNED(11 downto 0);
+           period_x 	: in  UNSIGNED(3 downto 0);
+           period_y 	: in  SFIXED(15 downto -16);
+           view_r   	: out  UNSIGNED(3 downto 0);
+           view_g   	: out  UNSIGNED(3 downto 0);
+           view_b   	: out  UNSIGNED(3 downto 0);
+	   clk		: in 	STD_LOGIC);
 end mvi_core_0_view;
 
 architecture Behavioral of mvi_core_0_view is
@@ -21,6 +21,7 @@ architecture Behavioral of mvi_core_0_view is
 signal i_view_r : UNSIGNED(3 downto 0);
 signal i_view_g : UNSIGNED(3 downto 0);
 signal i_view_b : UNSIGNED(3 downto 0);
+
 begin
 	-- Output <- Signal assignment
 	view_r <= i_view_r;
