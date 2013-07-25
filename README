@@ -1,0 +1,12 @@
+MVI (Multi View Interlace) System & Core
+
+-- Depends on fixed point packages which can be grabbed here - http://www.vhdl.org/fphdl/
+-- Make sure you read the fixed point user guide - http://www.vhdl.org/fphdl/Fixed_ug.pdf
+
+The structure of these modules are as follows:
+
+mvi_system
+    |____.. mvi_core_dispatcher
+    |____.. mvi_core
+              |____.. mvi_core_0_view
+              |____.. mvi_core_0_sample
