@@ -11,12 +11,12 @@ use ieee_proposed.fixed_pkg.all;
 entity mvi_core is
     Port ( fmt_width  : IN  UNSIGNED(11 downto 0);
            fmt_height : IN  UNSIGNED(11 downto 0);
-			  pos_x : in  UNSIGNED(11 downto 0);
+	   pos_x : in  UNSIGNED(11 downto 0);
            pos_y : in  UNSIGNED(11 downto 0);
-			  period_y : in  SFIXED(15 downto -16);
-			  period_x : in  UNSIGNED(3 downto 0);
+	   period_y : in  SFIXED(15 downto -16);
+	   period_x : in  UNSIGNED(3 downto 0);
            out_rgb : OUT  UNSIGNED(23 downto 0);
-			  clk : in STD_LOGIC);
+	  clk : in STD_LOGIC);
 end mvi_core;
 
 architecture Behavioral of mvi_core is
@@ -32,22 +32,22 @@ signal i_pos_x 		: UNSIGNED(11 downto 0);
 signal i_pos_y 		: UNSIGNED(11 downto 0);
 signal i_fmt_width 	: UNSIGNED(11 downto 0);
 signal i_fmt_height 	: UNSIGNED(11 downto 0);
-signal i_period_y 		: SFIXED(15 downto -16);
-signal i_period_x 		: UNSIGNED(3 downto 0);
+signal i_period_y     	: SFIXED(15 downto -16);
+signal i_period_x 	: UNSIGNED(3 downto 0);
 -- between components
 signal i_view_clk 	: STD_LOGIC;
-signal i_view_r 		: UNSIGNED(3 downto 0);
-signal i_view_g 		: UNSIGNED(3 downto 0);
-signal i_view_b 		: UNSIGNED(3 downto 0);
+signal i_view_r 	: UNSIGNED(3 downto 0);
+signal i_view_g 	: UNSIGNED(3 downto 0);
+signal i_view_b 	: UNSIGNED(3 downto 0);
 -- types for R, G, B
 signal i_type_r		: UNSIGNED(1 downto 0);
 signal i_type_g		: UNSIGNED(1 downto 0);
 signal i_type_b		: UNSIGNED(1 downto 0);
 -- for output
-signal i_out_r			: UNSIGNED(7 downto 0);
-signal i_out_g			: UNSIGNED(7 downto 0);
-signal i_out_b			: UNSIGNED(7 downto 0);
-signal i_out_rgb 		: UNSIGNED(23 downto 0);
+signal i_out_r		: UNSIGNED(7 downto 0);
+signal i_out_g		: UNSIGNED(7 downto 0);
+signal i_out_b		: UNSIGNED(7 downto 0);
+signal i_out_rgb 	: UNSIGNED(23 downto 0);
 
 COMPONENT mvi_core_0_view
 	PORT(
