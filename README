@@ -8,5 +8,5 @@ The structure of these modules are as follows:
 mvi_system
     |____.. mvi_core_dispatcher
     |____.. mvi_core
-              |____.. mvi_core_0_view
-              |____.. mvi_core_0_sample
+                |____.. mvi_core_0_view
+                |____.. mvi_core_0_sample
