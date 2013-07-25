@@ -7,30 +7,30 @@ use ieee_proposed.fixed_pkg.all;
 
 entity mvi_core_0_sample is
 	 Port ( fmt_width  : IN  UNSIGNED(11 downto 0);  -- Total width of frame
-           fmt_height : IN  UNSIGNED(11 downto 0);  -- Total height of frame
-			  pos_x 	  	 : IN  UNSIGNED(11 downto 0);  -- Position X we're writing color to
-           pos_y 	  	 : IN  UNSIGNED(11 downto 0);  -- Position Y we're writing the color to
-			  type_comp  : IN  UNSIGNED(1 downto 0);   -- Type of color component 00 R, 01 G, 10 B, 11 ERROR
-           view   	 : IN  UNSIGNED(3 downto 0);   -- View we are to sample from
-			  out_comp 	 : OUT UNSIGNED(7 downto 0);   -- Output color
-			  clk		  	 : IN 	STD_LOGIC);
+           	fmt_height : IN  UNSIGNED(11 downto 0);  -- Total height of frame
+		pos_x 	   : IN  UNSIGNED(11 downto 0);  -- Position X we're writing color to
+           	pos_y 	   : IN  UNSIGNED(11 downto 0);  -- Position Y we're writing the color to
+		type_comp  : IN  UNSIGNED(1 downto 0);   -- Type of color component 00 R, 01 G, 10 B, 11 ERROR
+	        view   	   : IN  UNSIGNED(3 downto 0);   -- View we are to sample from
+		out_comp   : OUT UNSIGNED(7 downto 0);   -- Output color
+		clk	   : IN  STD_LOGIC);
 end mvi_core_0_sample;
 
 architecture Behavioral of mvi_core_0_sample is
 
 -- Internal Signals
-signal i_samp_x    :  UNSIGNED(11 downto 0); 	   -- sampling x pos 
-signal i_samp_y    :  UNSIGNED(11 downto 0); 		-- sampling y pos
-signal i_out_comp  :  UNSIGNED(7 downto 0); -- calculated output color for pixel
+signal i_samp_x    :  UNSIGNED(11 downto 0); 	-- sampling x pos 
+signal i_samp_y    :  UNSIGNED(11 downto 0); 	-- sampling y pos
+signal i_out_comp  :  UNSIGNED(7 downto 0); 	-- calculated output color for pixel
 
 begin
 
 	sample_coords: process(sensitivity_list)
 
-	variable x 		: UNSIGNED(11 downto 0);			-- scaled x value for sampling
-	variable y 		: UNSIGNED(11 downto 0);				-- scaled y value for sampling
-	variable x_mod : UNSIGNED(11 downto 0);
-	variable y_mod : UNSIGNED(11 downto 0);
+	variable x 		: UNSIGNED(11 downto 0);	-- scaled x value for sampling
+	variable y 		: UNSIGNED(11 downto 0);	-- scaled y value for sampling
+	variable x_mod 		: UNSIGNED(11 downto 0);
+	variable y_mod 		: UNSIGNED(11 downto 0);
 	
 	begin
 	-- calculate modulus of input
