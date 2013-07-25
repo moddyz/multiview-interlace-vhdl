@@ -66,22 +66,18 @@ begin
 		x := x/3 + fmt_width*2/3;
 		y := y*3/8 + fmt_height*3/8;
 	when 7 =>							-- view number 7
-        -- 7 Bottom
-		if(y_in > fmt_height/3) then
+		if(y_in > fmt_height/3) then 				-- bottom
 			x := x/3 ;
 			y := y*3/8 + 5*fmt_height/8;
-        -- 7 Top
-		else
+		else         		     				-- top
 			x := x/3 + fmt_width/3;
 			y := y*3/8 + fmt_height*6/8;
 		end if;
 	when others =>							-- view number 8
-        -- 8 Bottom 
-		if(y_in > fmt_height*2/3) then
+		if(y_in > fmt_height*2/3) then				-- bottom 
 			x := x/3 + fmt_width / 3;
 			y := y*3/8 + fmt_height*5/8;
-        -- 8 Top
-		else
+		else							-- top
 			x := x/3 + fmt_width * 2/3;
 			y := y*3/8 + fmt_height*6/8;
 		end if;
