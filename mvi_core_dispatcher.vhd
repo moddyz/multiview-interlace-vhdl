@@ -7,7 +7,7 @@ use ieee_proposed.fixed_pkg.all;
 
 -- This module dispatches core(s) to process each pixel of a given frame
 -- fmt_width, fmt_height are the target output dimensions
--- p#_x, p#_y are the the inputs to the #th core for processing of the pixel at (X,Y)
+-- c#_x, c#_y are the the inputs to the #th core for processing of the pixel at (X,Y)
 -- fin - finished signal
 entity mvi_core_dispatcher is
     Port ( fmt_width, fmt_height : in  UNSIGNED (11 downto 0);
@@ -19,7 +19,8 @@ entity mvi_core_dispatcher is
 end mvi_core_dispatcher;
 
 architecture Behavioral of mvi_core_dispatcher is
--- Counters for coordinates X, Y
+
+-- Counters for pixel coordinates X, Y
 signal cnt_x : UNSIGNED (11 downto 0) := (others => '0');
 signal cnt_y : UNSIGNED (11 downto 0) := (others => '0');
 
