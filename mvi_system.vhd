@@ -50,14 +50,14 @@ architecture Behavioral of mvi_system is
 	-- Core 
 		COMPONENT mvi_core
 	PORT(
-		fmt_width  : IN  UNSIGNED(11 downto 0);
-      fmt_height : IN  UNSIGNED(11 downto 0);
-		pos_x 	  : IN UNSIGNED(11 downto 0);
-		pos_y 	  : IN UNSIGNED(11 downto 0);
-		period_y   : IN SFIXED(15 downto -16);
-		period_x   : IN UNSIGNED(3 downto 0);          
-		out_rgb 	  : OUT UNSIGNED(23 downto 0);
-		clk		  : IN STD_LOGIC
+		fmt_width  	: IN  UNSIGNED(11 downto 0);
+      		fmt_height 	: IN  UNSIGNED(11 downto 0);
+		pos_x 	  	: IN UNSIGNED(11 downto 0);
+		pos_y 	  	: IN UNSIGNED(11 downto 0);
+		period_y   	: IN SFIXED(15 downto -16);
+		period_x   	: IN UNSIGNED(3 downto 0);          
+		out_rgb 	: OUT UNSIGNED(23 downto 0);
+		clk		: IN STD_LOGIC
 		);
 	END COMPONENT;
 
