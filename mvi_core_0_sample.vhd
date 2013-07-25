@@ -5,6 +5,10 @@ use ieee_proposed.fixed_pkg.all;
 
 --use UNISIM.VComponents.all;
 
+-- Core's submodule 'Sample'
+-- Based on target coordinates, we sample from a certain view
+-- Sampling translates to bilinear interpolation in our case, and we are doing it for a particular sub-pixel
+
 entity mvi_core_0_sample is
 	 Port ( fmt_width  : IN  UNSIGNED(11 downto 0);  -- Total width of frame
            	fmt_height : IN  UNSIGNED(11 downto 0);  -- Total height of frame
