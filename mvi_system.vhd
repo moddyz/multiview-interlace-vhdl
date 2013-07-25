@@ -8,40 +8,40 @@ use ieee_proposed.fixed_pkg.all;
 -- the cores and the core dispatchers
 
 entity mvi_system is
-    Port ( fmt_width  : IN  UNSIGNED(11 downto 0);
-           fmt_height : IN  UNSIGNED(11 downto 0);
-           angle 		 : IN  SFIXED(31 downto 0);
-           views 		 : IN  UNSIGNED(3 downto 0);
-           clk 		 : IN  STD_LOGIC;
-           fin 		 : OUT STD_LOGIC;
-			  c0_out_rgb : OUT UNSIGNED(23 downto 0)); -- Testing purposes only, core RGB output
+    Port ( fmt_width    : IN  UNSIGNED(11 downto 0);
+           fmt_height   : IN  UNSIGNED(11 downto 0);
+           angle 	: IN  SFIXED(31 downto 0);
+           views 	: IN  UNSIGNED(3 downto 0);
+           clk 		: IN  STD_LOGIC;
+           fin 		: OUT STD_LOGIC;
+	   c0_out_rgb   : OUT UNSIGNED(23 downto 0)); -- Testing purposes only, core RGB output
 end mvi_system;
 
 architecture Behavioral of mvi_system is
 	
 	-- System Internal Signals
-	signal i_fmt_width  : UNSIGNED(11 downto 0);
-   signal i_fmt_height : UNSIGNED(11 downto 0);
+	signal i_fmt_width  	  : UNSIGNED(11 downto 0);
+   	signal i_fmt_height 	  : UNSIGNED(11 downto 0);
 	signal i_angle		  : SFIXED(31 downto 0);
 	signal i_views		  : UNSIGNED(3 downto 0);
 	signal i_clk		  : STD_LOGIC;
 	signal i_fin 		  : STD_LOGIC;
 	
 	-- Core Internal Signals
-	signal i_c0_clk	  : STD_LOGIC;
-	signal i_c0_x 		  : UNSIGNED(11 downto 0);
-	signal i_c0_y 		  : UNSIGNED(11 downto 0);
-	signal i_c0_out_rgb : UNSIGNED(23 downto 0);
+	signal i_c0_clk	  	: STD_LOGIC;
+	signal i_c0_x 		: UNSIGNED(11 downto 0);
+	signal i_c0_y 		: UNSIGNED(11 downto 0);
+	signal i_c0_out_rgb 	: UNSIGNED(23 downto 0);
 	
 
 	-- Core Dispatcher Component
 	COMPONENT mvi_core_dispatcher
 	PORT(
-		fmt_width  : IN UNSIGNED(11 downto 0);
-		fmt_height : IN UNSIGNED(11 downto 0);      
+		fmt_width  	  : IN UNSIGNED(11 downto 0);
+		fmt_height 	  : IN UNSIGNED(11 downto 0);      
 		c0_x 		  : OUT UNSIGNED(11 downto 0);
 		c0_y 		  : OUT UNSIGNED(11 downto 0);
-		c0_clk	  : OUT STD_LOGIC;
+		c0_clk	  	  : OUT STD_LOGIC;
 		clk 		  : IN STD_LOGIC;   
 		fin 		  : OUT STD_LOGIC
 		);
