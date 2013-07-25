@@ -30,21 +30,22 @@ signal i_out_comp  :  UNSIGNED(7 downto 0); 	-- calculated output color for pixe
 begin
 
 	sample_coords: process(sensitivity_list)
-
+	
+	-- Variable declaration
 	variable x 		: UNSIGNED(11 downto 0);	-- scaled x value for sampling
 	variable y 		: UNSIGNED(11 downto 0);	-- scaled y value for sampling
 	variable x_mod 		: UNSIGNED(11 downto 0);
 	variable y_mod 		: UNSIGNED(11 downto 0);
 	
 	begin
-	-- calculate modulus of input
+	
+	-- Compute modulus of input
 	x_mod := pos_x mod 3; --Compiler complaining about mod
 	y_mod := pos_y mod 8; --Compiler complaining about mod
-
 	x := pos_x - x_mod;
 	y := pos_y - y_mod;
 
-	--calculated pixel sample given view number
+	-- Compute pixel sample given view number
 	case (view) is
 	when 1 => 							-- view number 1
 		x := x/3;
@@ -89,6 +90,7 @@ begin
 	-- set output
 	i_samp_x <= x;
 	i_samp_y <= y;
+	
 	end process;
 
 	-- Bilinear Interpolation Code
