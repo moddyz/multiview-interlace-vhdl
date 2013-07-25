@@ -27,7 +27,7 @@ signal cnt_y : UNSIGNED (11 downto 0) := (others => '0');
 signal s_fin : STD_LOGIC := '0';
 
 begin
-	-- Pixel Dispatching Process
+	-- Core Processing Pixel Dispatching Process
 	dispatch_proc: process(clk)
 	begin
 		if rising_edge(clk) then
