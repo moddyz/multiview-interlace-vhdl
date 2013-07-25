@@ -31,11 +31,14 @@ begin
 	dispatch_proc: process(clk)
 	begin
 		if rising_edge(clk) then
+			-- if x has not passed the frame width, increment x
 			if ((cnt_x + 1) < fmt_width) then
 				cnt_x <= cnt_x + 1;
 			else
+			-- if x passed the frame width, reset x, increment y
 				cnt_y <= cnt_y + 1;
 				cnt_x <= "000000000000";
+				-- if y have passed the frame height, send "finished' signal
 				if ((cnt_y + 1) = fmt_height) then
 					s_fin <= '1';
 				end if;
