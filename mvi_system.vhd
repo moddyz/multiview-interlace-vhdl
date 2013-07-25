@@ -48,7 +48,7 @@ architecture Behavioral of mvi_system is
 	END COMPONENT;
 	
 	-- Core 
-		COMPONENT mvi_core
+	COMPONENT mvi_core
 	PORT(
 		fmt_width  	: IN  UNSIGNED(11 downto 0);
       		fmt_height 	: IN  UNSIGNED(11 downto 0);
