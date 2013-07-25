@@ -88,6 +88,9 @@ begin
 	i_type_g <= "10";
 	i_type_b <= "11";
 	
+	-- Combining the component signals
+	i_out_rgb <= i_out_r & i_out_g & i_out_b;
+	
 	-- Assign signal to output
 	out_rgb <= i_out_rgb;
 
