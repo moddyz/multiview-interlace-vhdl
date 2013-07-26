@@ -51,27 +51,27 @@ signal i_out_rgb        : UNSIGNED(23 downto 0);
 
 COMPONENT mvi_core_0_view
     PORT(
-        pos_x : IN UNSIGNED(11 downto 0);
-        pos_y : IN UNSIGNED(11 downto 0);
-        period_x : IN UNSIGNED(3 downto 0);
-        period_y : IN SFIXED(15 downto -16);
-        clk : IN STD_LOGIC;          
-        view_r : OUT UNSIGNED(3 downto 0);
-        view_g : OUT UNSIGNED(3 downto 0);
-        view_b : OUT UNSIGNED(3 downto 0)
+        pos_x       : IN UNSIGNED(11 downto 0);
+        pos_y       : IN UNSIGNED(11 downto 0);
+        period_x    : IN UNSIGNED(3 downto 0);
+        period_y    : IN SFIXED(15 downto -16);
+        clk         : IN STD_LOGIC;          
+        view_r      : OUT UNSIGNED(3 downto 0);
+        view_g      : OUT UNSIGNED(3 downto 0);
+        view_b      : OUT UNSIGNED(3 downto 0)
         );
     END COMPONENT;
     
 COMPONENT mvi_core_0_sample
     PORT(
-        fmt_width : IN std_logic_vector(11 downto 0);
-        fmt_height : IN std_logic_vector(11 downto 0);
-        pos_x : IN std_logic_vector(11 downto 0);
-        pos_y : IN std_logic_vector(11 downto 0);
-        type_comp : IN std_logic_vector(1 downto 0);
-        view : IN std_logic_vector(3 downto 0);
-        clk : IN std_logic;          
-        out_comp : OUT std_logic_vector(7 downto 0)
+        fmt_width   : IN UNSIGNED(11 downto 0);
+        fmt_height  : IN UNSIGNED(11 downto 0);
+        pos_x       : IN UNSIGNED(11 downto 0);
+        pos_y       : IN UNSIGNED(11 downto 0);
+        type_comp   : IN UNSIGNED(1 downto 0);
+        view        : IN UNSIGNED(3 downto 0);
+        clk         : IN STD_LOGIC;          
+        out_comp    : OUT UNSIGNED(7 downto 0)
         );
     END COMPONENT;
 
