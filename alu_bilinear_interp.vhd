@@ -9,13 +9,14 @@ use ieee_proposed.fixed_pkg.all;
 -- ---------
 -- 10 | 11
 -- Position of Neighbouring values labeled with (Y,X) 
+
 entity alu_bilinear_interp is
     Port (  pos_x   : IN  UNSIGNED(11 downto 0);
             pos_y   : IN  UNSIGNED(11 downto 0);
-			nval_00 : in  UNSIGNED(8 downto 0);
+            nval_00 : IN  UNSIGNED(8 downto 0);
             nval_01 : IN  UNSIGNED(8 downto 0);
             nval_10 : IN  UNSIGNED(8 downto 0);
             nval_11 : IN  UNSIGNED(8 downto 0);
-            ival    : OUT  UNSIGNED(23 downto 0);
-			  clk : in STD_LOGIC);
+            out_val : OUT  UNSIGNED(23 downto 0);
+            clk     : IN STD_LOGIC);
 end alu_bilinear_interp;
