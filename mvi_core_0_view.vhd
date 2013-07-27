@@ -11,8 +11,8 @@ use ieee_proposed.fixed_pkg.all;
 -- period_y is computed from the angle factor from the angle module outside the core
 
 entity mvi_core_0_view is
-    Port ( pos_x     : in  UNSIGNED(11 downto 0);
-           pos_y     : in  UNSIGNED(11 downto 0);
+    Port ( pos_x        : in  UNSIGNED(11 downto 0);
+           pos_y        : in  UNSIGNED(11 downto 0);
            period_x     : in  UNSIGNED(3 downto 0);
            period_y     : in  SFIXED(15 downto -16);
            view_r       : out  UNSIGNED(3 downto 0);
@@ -35,15 +35,15 @@ begin
     view_proc: process(clk)
 
     -- Process Variables
-    variable v_view_root     : SFIXED(15 downto -16) := to_sfixed(0, 15, -16);
-    variable v_temp     : SFIXED(15 downto -16) := to_sfixed(0, 15, -16);
-    variable v_sview_r     : SFIXED(15 downto -16) := to_sfixed(0, 15, -16);
-    variable v_pos_x     : SFIXED(15 downto -16) := to_sfixed(0, 15, -16);
-    variable v_pos_y     : SFIXED(15 downto -16) := to_sfixed(0, 15, -16);
-    variable v_uview_r     : UNSIGNED(3 downto 0)     := to_unsigned(0, 4);
-    variable v_uview_g     : UNSIGNED(3 downto 0)     := to_unsigned(0, 4);
-    variable v_uview_b     : UNSIGNED(3 downto 0)     := to_unsigned(0, 4);
-    variable v_utemp    : UNSIGNED(31 downto 0) := to_unsigned(0, 32);
+    variable v_view_root    : SFIXED(15 downto -16) := to_sfixed(0, 15, -16);
+    variable v_temp         : SFIXED(15 downto -16) := to_sfixed(0, 15, -16);
+    variable v_sview_r      : SFIXED(15 downto -16) := to_sfixed(0, 15, -16);
+    variable v_pos_x        : SFIXED(15 downto -16) := to_sfixed(0, 15, -16);
+    variable v_pos_y        : SFIXED(15 downto -16) := to_sfixed(0, 15, -16);
+    variable v_uview_r      : UNSIGNED(3 downto 0)     := to_unsigned(0, 4);
+    variable v_uview_g      : UNSIGNED(3 downto 0)     := to_unsigned(0, 4);
+    variable v_uview_b      : UNSIGNED(3 downto 0)     := to_unsigned(0, 4);
+    variable v_utemp        : UNSIGNED(31 downto 0) := to_unsigned(0, 32);
     
     begin
         if rising_edge(clk) then

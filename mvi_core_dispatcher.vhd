@@ -13,9 +13,9 @@ entity mvi_core_dispatcher is
     Port ( fmt_width, fmt_height : in  UNSIGNED (11 downto 0);
            c0_x : out  UNSIGNED(11 downto 0);
            c0_y : out  UNSIGNED(11 downto 0);
-       c0_clk : out STD_LOGIC;
-       fin : out STD_LOGIC;
-       clk : in  STD_LOGIC);
+           c0_clk : out STD_LOGIC;
+           fin : out STD_LOGIC;
+           clk : in  STD_LOGIC);
 end mvi_core_dispatcher;
 
 architecture Behavioral of mvi_core_dispatcher is
