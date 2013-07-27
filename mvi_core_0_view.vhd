@@ -40,9 +40,9 @@ begin
     variable v_sview_r      : SFIXED(15 downto -16) := to_sfixed(0, 15, -16);
     variable v_pos_x        : SFIXED(15 downto -16) := to_sfixed(0, 15, -16);
     variable v_pos_y        : SFIXED(15 downto -16) := to_sfixed(0, 15, -16);
-    variable v_uview_r      : UNSIGNED(3 downto 0)     := to_unsigned(0, 4);
-    variable v_uview_g      : UNSIGNED(3 downto 0)     := to_unsigned(0, 4);
-    variable v_uview_b      : UNSIGNED(3 downto 0)     := to_unsigned(0, 4);
+    variable v_uview_r      : UNSIGNED(3 downto 0)  := to_unsigned(0, 4);
+    variable v_uview_g      : UNSIGNED(3 downto 0)  := to_unsigned(0, 4);
+    variable v_uview_b      : UNSIGNED(3 downto 0)  := to_unsigned(0, 4);
     variable v_utemp        : UNSIGNED(31 downto 0) := to_unsigned(0, 32);
     
     begin
