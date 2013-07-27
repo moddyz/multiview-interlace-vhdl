@@ -20,3 +20,8 @@ entity alu_bilinear_interp is
             out_val : OUT  UNSIGNED(23 downto 0);
             clk     : IN STD_LOGIC);
 end alu_bilinear_interp;
+
+architecture Behavioral of alu_bilinear_interp is
+begin
+end Behavioral;
+
