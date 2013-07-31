@@ -13,11 +13,11 @@ use ieee_proposed.fixed_pkg.all;
 entity alu_bilinear_interp is
     Port (  pos_x   : IN  UFIXED(11 downto -12);
             pos_y   : IN  UFIXED(11 downto -12);
-            val_00  : IN  UNSIGNED(8 downto 0);
-            val_01  : IN  UNSIGNED(8 downto 0);
-            val_10  : IN  UNSIGNED(8 downto 0);
-            val_11  : IN  UNSIGNED(8 downto 0);
-            out_val : OUT  UNSIGNED(8 downto 0);
+            val_00  : IN  UNSIGNED(7 downto 0);
+            val_01  : IN  UNSIGNED(7 downto 0);
+            val_10  : IN  UNSIGNED(7 downto 0);
+            val_11  : IN  UNSIGNED(7 downto 0);
+            out_val : OUT  UNSIGNED(7 downto 0);
             clk     : IN STD_LOGIC);
 end alu_bilinear_interp;
 
@@ -27,7 +27,7 @@ signal weight_x_0, weight_x_1, : UFIXED(11 downto -12) := (others => '0');
 signal lerp_x_t, lerp_x_b, lerp_y UFIXED(11 downto -12) := (others => '0');
 
 begin
-    out_val <= unsigned(lerp_y(8 downto 0));
+    out_val <= unsigned(lerp_y(7 downto 0));
     
     -- Weight Compute is parallel set
     weight_x_proc: process(clk) is
