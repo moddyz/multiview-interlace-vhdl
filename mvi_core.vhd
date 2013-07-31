@@ -8,7 +8,7 @@ use ieee_proposed.fixed_pkg.all;
 -- The Multi-view Interlacer core, all the computation is on this circuit
 -- Composed of two main modules, a view compute module and sampling module
 
-entity mvi_core is
+entity mvcore is
     Port ( fmt_width    : IN  UNSIGNED(11 downto 0);
            fmt_height   : IN  UNSIGNED(11 downto 0);
            pos_x        : IN  UNSIGNED(11 downto 0);
@@ -17,9 +17,9 @@ entity mvi_core is
            period_x     : IN  UNSIGNED(3 downto 0);
            out_rgb      : OUT UNSIGNED(23 downto 0);
            clk          : IN  STD_LOGIC);
-end mvi_core;
+end mvcore;
 
-architecture Behavioral of mvi_core is
+architecture Behavioral of mvcore is
 
 -- Components ...
 -- 1) View Computer --> Diverge
@@ -30,17 +30,15 @@ architecture Behavioral of mvi_core is
 signal view_r         : UNSIGNED(3 downto 0);
 signal view_g         : UNSIGNED(3 downto 0);
 signal view_b         : UNSIGNED(3 downto 0);
--- types for R, G, B
-signal i_type_r         : UNSIGNED(1 downto 0);
-signal i_type_g         : UNSIGNED(1 downto 0);
-signal i_type_b         : UNSIGNED(1 downto 0);
--- for output
-signal i_out_r          : UNSIGNED(7 downto 0);
-signal i_out_g          : UNSIGNED(7 downto 0);
-signal i_out_b          : UNSIGNED(7 downto 0);
-signal i_out_rgb        : UNSIGNED(23 downto 0);
+signal type_r         : UNSIGNED(1 downto 0);
+signal type_g         : UNSIGNED(1 downto 0);
+signal type_b         : UNSIGNED(1 downto 0);
+signal out_r          : UNSIGNED(7 downto 0);
+signal out_g          : UNSIGNED(7 downto 0);
+signal out_b          : UNSIGNED(7 downto 0);
+signal out_rgb        : UNSIGNED(23 downto 0);
 
-COMPONENT mvi_core_0_view
+COMPONENT mvcore_0_view
     PORT(
         pos_x       : IN UNSIGNED(11 downto 0);
         pos_y       : IN UNSIGNED(11 downto 0);
@@ -53,7 +51,7 @@ COMPONENT mvi_core_0_view
         );
     END COMPONENT;
     
-COMPONENT mvi_core_0_sample
+COMPONENT mvcore_0_sample
     PORT(
         fmt_width   : IN UNSIGNED(11 downto 0);
         fmt_height  : IN UNSIGNED(11 downto 0);
@@ -69,16 +67,16 @@ COMPONENT mvi_core_0_sample
 begin
     
     -- Assigning types for components
-    i_type_r <= "00";
-    i_type_g <= "10";
-    i_type_b <= "11";
+    type_r <= "00";
+    type_g <= "10";
+    type_b <= "11";
     
     -- Combining the component signals
     -- Combined!
-    out_rgb <= i_out_r & i_out_g & i_out_b;
+    out_rgb <= out_r & out_g & out_b;
     
     -- View Component
-    CORE_L0_VIEW: mvi_core_0_view PORT MAP(
+    CORE_L0_VIEW: mvcore_0_view PORT MAP(
         pos_x => pos_x,
         pos_y => pos_y,
         period_x => period_x,
@@ -86,42 +84,42 @@ begin
         view_r => view_r,
         view_g => view_g,
         view_b => view_b,
-        clk => i_view_clk -- ??? DONT KNOW
+        clk => clk
     );
     
-    -- Red Component Sampling Component
-    CORE_L0_R_SAMPLE: mvi_core_0_sample PORT MAP(
+    -- Red Sampling Component
+    CORE_L0_R_SAMPLE: mvcore_0_sample PORT MAP(
         fmt_width => fmt_width,
         fmt_height => fmt_height,
         pos_x => pos_x,
         pos_y => pos_y,
-        type_comp => i_type_r,
+        type_comp => type_r,
         view => view_r,
-        out_comp => i_out_r,
-        clk => clk -- ??? DONT KNOW
+        out_comp => out_r,
+        clk => clk 
     );
     
-    -- Green Component Sampling Component
-    CORE_L0_G_SAMPLE: mvi_core_0_sample PORT MAP(
+    -- Green Sampling Component
+    CORE_L0_G_SAMPLE: mvcore_0_sample PORT MAP(
         fmt_width => fmt_width,
         fmt_height => fmt_height,
         pos_x => pos_x,
         pos_y => pos_y,
-        type_comp => i_type_g,
+        type_comp => type_g,
         view => view_g,
-        out_comp => i_out_g,
-        clk => clk -- ??? DONT KNOW
+        out_comp => out_g,
+        clk => clk
     );
     
-    -- Blue Component Sampling Component
-    CORE_L0_B_SAMPLE: mvi_core_0_sample PORT MAP(
+    -- Blue Sampling Component
+    CORE_L0_B_SAMPLE: mvcore_0_sample PORT MAP(
         fmt_width => fmt_width,
         fmt_height => fmt_height,
         pos_x => pos_x,
         pos_y => pos_y,
-        type_comp => i_type_b,
+        type_comp => type_b,
         view => view_b,
-        out_comp => i_out_b,
+        out_comp => out_b,
         clk => clk
     );
 end Behavioral;
