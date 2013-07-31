@@ -32,13 +32,14 @@ begin
     -- Weight Compute is parallel set
     weight_x_proc: process(clk) is
         variable flr, tmp: UFIXED (11 downto -12) := (others => '0');
-        if rising_edge(clk) then 
-            flr(11 downto 0) := pos_x(11 downto 0);
-            tmp := resize(pos_x - flr, pos_x'high, pos_x'low);
-            weight_x_0(-1 downto -12) <= tmp(-1 downto -12); 
-            weight_x_1 <= resize(to_ufixed(1, weight_x_0) - weight_x_0, weight_x_0'high, weight_x_0'low); 
-       end if; 
-    end process;
+        begin
+            if rising_edge(clk) then 
+                flr(11 downto 0) := pos_x(11 downto 0);
+                tmp := resize(pos_x - flr, pos_x'high, pos_x'low);
+                weight_x_0(-1 downto -12) <= tmp(-1 downto -12); 
+                weight_x_1 <= resize(to_ufixed(1, weight_x_0) - weight_x_0, weight_x_0'high, weight_x_0'low); 
+           end if; 
+        end process;
     
     weight_y_proc: process(clk) is
         variable flr, tmp: UFIXED (11 downto -12) := (others => '0');
@@ -77,7 +78,6 @@ begin
             lerp_y <= resize(val_y_0 + val_y_1, lerp_y'high, lerp_y'low);
         end if;
     end process;
-    
-    
+
 end Behavioral;
 
