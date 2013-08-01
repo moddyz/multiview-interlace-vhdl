@@ -23,8 +23,8 @@ end alu_bilinear_interp;
 
 architecture Behavioral of alu_bilinear_interp is
 
-signal weight_x_0, weight_x_1, : UFIXED(11 downto -12) := (others => '0');
-signal lerp_x_t, lerp_x_b, lerp_y UFIXED(11 downto -12) := (others => '0');
+signal weight_x_0, weight_x_1, weight_y_0, weight_y_1 : UFIXED(11 downto -12) := (others => '0');
+signal lerp_x_t, lerp_x_b, lerp_y : UFIXED(11 downto -12) := (others => '0');
 
 begin
     out_val <= unsigned(lerp_y(7 downto 0));
@@ -37,7 +37,7 @@ begin
                 flr(11 downto 0) := pos_x(11 downto 0);
                 tmp := resize(pos_x - flr, pos_x'high, pos_x'low);
                 weight_x_0(-1 downto -12) <= tmp(-1 downto -12); 
-                weight_x_1 <= resize(to_ufixed(1, weight_x_0) - weight_x_0, weight_x_0'high, weight_x_0'low); 
+                weight_x_1 <= resize(to_ufixed(1, weight_x_0) - tmp, weight_x_0'high, weight_x_0'low); 
            end if; 
         end process;
     
@@ -48,7 +48,7 @@ begin
                 flr(11 downto 0) := pos_y(11 downto 0);
                 tmp := resize(pos_y - flr, pos_y'high, pos_y'low);
                 weight_y_0(-1 downto -12) <= tmp(-1 downto -12); 
-                weight_y_1 <= resize(to_ufixed(1, weight_y_0) - weight_y_0, weight_y_0'high, weight_y_0'low);
+                weight_y_1 <= resize(to_ufixed(1, weight_y_0) - tmp, weight_y_0'high, weight_y_0'low);
             end if; 
         end process;
     
@@ -76,8 +76,7 @@ begin
             val_y_0 := resize(lerp_x_t * weight_y_1, lerp_x_t'high, lerp_x_b'low);
             val_y_1 := resize(lerp_x_b * weight_y_0, lerp_x_t'high, lerp_x_b'low);
             lerp_y <= resize(val_y_0 + val_y_1, lerp_y'high, lerp_y'low);
-        end if;
-    end process;
+        end process;
 
 end Behavioral;
 
